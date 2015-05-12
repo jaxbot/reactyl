@@ -21,14 +21,17 @@ var App = React.createClass({
   _onChange: function() {
     this.setState({ post: Store.getCurrentPage() });
   },
+  _markup: function() {
+    return { __html: this.state.post }
+  },
   render: function() {
     return (
       <html>
         <head>
-          <script src="public/app.js"></script>
+          <script src="app.js"></script>
         </head>
         <body>
-          <div id="butts">{this.state.post}</div>
+          <div id="butts" dangerouslySetInnerHTML={this._markup()}></div>
           <Link href="test2.html">Test2</Link>
         </body>
       </html>

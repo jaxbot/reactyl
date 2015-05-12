@@ -14,8 +14,10 @@
   "author": "Jonathan Warner (Jaxbot)",
   "license": "MIT",
   "dependencies": {
+    "marked": "^0.3.3",
     "node-jsx": "^0.13.3",
     "react": "^0.13.3",
-    "reactify": "^1.1.1"
+    "reactify": "^1.1.1",
+    "yamljs": "^0.2.2"
   }
 }
