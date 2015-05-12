@@ -4,5 +4,6 @@ var React = require('react');
 var App = require('./app/App.jsx');
 
 
-fs.writeFileSync("test.html", React.renderToString(App({})));
+var text = "This is a blog post";
+fs.writeFileSync("test.html", React.renderToString(App({ post: text })));
 

@@ -1,9 +1,11 @@
 var React = require('react');
+var Store = require('./Store');
 var Link = React.createClass({
   _click: function(e) {
     console.log("clicked " + this.props.href);
     e.preventDefault();
-    this.setState({});
+    Store.setCurrentPage("This is a different blog post");
+    Store.emitChange();
   },
   render: function() {
     console.log("renderme");
