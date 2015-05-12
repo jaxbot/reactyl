@@ -1,11 +1,27 @@
 var React = require('react');
 var Store = require('./Store');
+if (typeof window != "undefined") {
+  window.onpopstate = function(state) {
+    console.log(state);
+    Store.setCurrentPage(state.state.post);
+    Store.emitChange();
+  };
+}
+
 var Link = React.createClass({
   _click: function(e) {
     console.log("clicked " + this.props.href);
     e.preventDefault();
-    Store.setCurrentPage("This is a different blog post");
-    Store.emitChange();
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", this.props.href + ".raw");
+    var href = this.props.href;
+    xhr.onload = function() {
+      Store.setCurrentPage(xhr.responseText);
+      Store.emitChange();
+      history.replaceState({ post: xhr.responseText }, null, href);
+    };
+    xhr.send();
+    history.pushState(null, null, this.props.href);
   },
   render: function() {
     console.log("renderme");
