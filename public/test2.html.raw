@@ -1,0 +1,2 @@
+<p>This is the second test page. Notice how the back and forward buttons work normally, but we&#39;re not really reloading the page.</p>
+<p>If you did refresh, you would be served the static page, which would get rerendered into React on the fly.</p>
