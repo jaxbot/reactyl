@@ -2,7 +2,6 @@ var React = require('react');
 var Store = require('./Store');
 if (typeof window != "undefined") {
   window.onpopstate = function(state) {
-    console.log(state);
     Store.setCurrentPage(state.state.post);
     Store.emitChange();
   };
@@ -10,7 +9,6 @@ if (typeof window != "undefined") {
 
 var Link = React.createClass({
   _click: function(e) {
-    console.log("clicked " + this.props.href);
     e.preventDefault();
     var xhr = new XMLHttpRequest();
     xhr.open("GET", this.props.href + ".raw");
@@ -24,7 +22,6 @@ var Link = React.createClass({
     history.pushState(null, null, this.props.href);
   },
   render: function() {
-    console.log("renderme");
     return (
       <a href={this.props.href} onClick={this._click}>{this.props.children}</a>
     );
